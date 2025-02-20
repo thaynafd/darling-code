@@ -23,14 +23,16 @@ nav{
     justify-content: space-around;
     align-items: center;
 }
+
 .logo{
     color: white;
     font-size: 2rem;
     font-weight: bold;
 }
+
 .logo span{
     color: #9e26d6;
-    text-shadow: 0 0 10px #9e26d6;
+    text-shadow: 0 0 10vw #9e26d6;
 }
 .hamburg,
 .cancel{
@@ -104,15 +106,19 @@ section{
     justify-content: space-evenly;
     align-items: center;
 }
-.main-container .image{
-    width: 400px;
-    height: 40vh;
+.main-container .image {
+    width: 30vw;
+    height: 30vw;
     border-radius: 80%;
     overflow: hidden;
     box-shadow: 0 0 50px #9e26d6;
+    position: relative; /* Garantir que a imagem se ajuste dentro do contêiner */
 }
-.main-container .image img{
-    width: 100%;
+
+.main-container .image img {
+    width: 100%; /* Ajusta a largura da imagem para preencher o contêiner */
+    height: 100%; /* Ajusta a altura da imagem para preencher o contêiner */
+    object-fit: cover; /* A imagem vai cobrir o contêiner sem distorcer */
 }
 .main-container .image:hover{
     animation: animate 1.5s ease-in-out infinite;
@@ -196,8 +202,8 @@ section{
 @media (max-width:884px) {
     nav .logo{
         position: absolute;
-        top: 16px;
-        left: 15px;
+        top: 16vw;
+        left: 15vw;
         font-size: 1.5rem;
     }
     .main-container {
@@ -221,8 +227,8 @@ section{
     }
     .main-container .image{
         z-index: -1;
-        width: 50%;
-        height: 50%;
+        width: 30%;
+        height: 30%;
     }
 }
 @media (max-width:440px){
