@@ -16,12 +16,16 @@ nav{
     height: 10vh;
     position: sticky;
 }
+
 .nav-container{
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: top;
+    position: fixed; /* Fix the nav in place */
+    top: 30px; /* Add some space from the top of the viewport */
+    z-index: 1000; /* Ensure it stays above other content */
 }
 
 .logo{
@@ -35,6 +39,7 @@ nav{
     text-shadow: 0 0 10vw #9e26d6;
 }
 .hamburg,
+
 .cancel{
     cursor: pointer;
     position: absolute;
@@ -72,6 +77,7 @@ nav{
 .nav-container .links a:hover{
     color: #9e26d6;
 }
+
 .dropdown{
     z-index: 100;
     position: absolute;
@@ -83,6 +89,7 @@ nav{
     box-shadow:  0 0 20px black;
     transition: 0.2s linear;
 }
+
 .dropdown .links a{
     display: flex;
     color: white;
@@ -92,9 +99,21 @@ nav{
     align-items: center;
     transition: 0.2s linear;
 }
+.dropdown .links a::before{
+    position: absolute;
+    content: "";
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: #9e26d6;
+    transition: 0.2s linear;
+}
+
 .dropdown .links a:hover{
     background-color: #9e26d6;
 }
+
 section{
     width: 100%;
     height: 90vh;
@@ -120,9 +139,11 @@ section{
     height: 100%; /* Ajusta a altura da imagem para preencher o contêiner */
     object-fit: cover; /* A imagem vai cobrir o contêiner sem distorcer */
 }
+
 .main-container .image:hover{
     animation: animate 1.5s ease-in-out infinite;
 }
+
 @keyframes animate {
     0%{
         scale: 1;
@@ -250,6 +271,11 @@ section{
     border-radius: 15px; /* Bordas arredondadas */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave ao redor do card */
     margin: 20px auto; /* Centraliza o card na página */
+    transition: transform 0.3s ease-in-out; /* Adiciona uma transição suave */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Aumenta o card em 5% */
 }
 
 .texto2 {
@@ -272,23 +298,32 @@ section{
     .main-container button{
         margin-top: 15px;
     }
+    .feature {
+        width: calc(100% - 20px); /* Ajusta a largura dos cards para 100% em telas muito pequenas */
+    }
+    .feature {
+        width: calc(50% - 20px); /* Ajusta a largura dos cards para 50% em telas menores */
+    }
+    .nav-container .links a{
+        font-size: 1rem;
+    }
 }
 
 .features {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    display: flex; /* Exibe os cards em linha */
+    flex-wrap: wrap; /* Quebra a linha quando não há espaço suficiente */
+    gap: 10px; /* Adiciona um pequeno espaçamento entre os cards */
+    justify-content: center; /* Centraliza os cards horizontalmente */
 }
 
 .feature {
     background-color: #2c3e50; /* Cor de fundo do card */
-    padding: 20px;
-    border-radius: 10px;
-    width: 30%;
-    margin: 10px;
+    padding: 20px; /* Espaçamento interno do card */
+    margin: 10px; /* Espaçamento externo do card */
+    border-radius: 10px; /* Bordas arredondadas */
+    width: calc(25% - 30px); /* Largura do card com espaçamento reduzido */
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
 }
 
 .feature i {
@@ -305,8 +340,4 @@ section{
 .feature p {
     font-size: 1rem;
     line-height: 1.5;
-}
-
-.feature:hover {
-    transform: scale(1.05);
 }
