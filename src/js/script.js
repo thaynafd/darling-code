@@ -10,7 +10,7 @@ function cancel(){
 const texts = [
     "BOTS PERSONALIZADOS",
     "SOLUÇÕES EM AUTOMAÇÃO",
-    "SIMPLIFIQUE"
+    "DESCOMPLIQUE AGORA"
 ]
 let speed  =100;
 const textElements = document.querySelector(".typewriter-text");
