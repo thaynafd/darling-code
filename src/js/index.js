@@ -37,4 +37,5 @@ function eraseText(){
         setTimeout(typeWriter, 500)
     }
 }
+
 window.onload = typeWriter
