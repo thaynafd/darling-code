@@ -1,13 +1,11 @@
-// URL do webhook do Discord
-const webhookURL = `${secrets.webhook}`;  // URL do webhook do Discord
-
-// Função para validar o telefone com DDD
-function validarTelefone(telefone) {
-    const regex = /^\(\d{2}\)\s?\d{5}-\d{4}$/;
-    return regex.test(telefone);  // Retorna true se o telefone for válido, ou false se não for
+// Função para carregar o webhookURL do arquivo .json
+async function getWebhookURL() {
+    const response = await fetch('webhook.json');
+    const data = await response.json();
+    return data.webhookURL;  // Retorna a URL do webhook
 }
 
-// Função para lidar com o envio do formulário
+// Função para enviar os dados ao Discord
 document.getElementById("contact-form").addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -17,9 +15,10 @@ document.getElementById("contact-form").addEventListener("submit", function(even
     const mensagem = document.getElementById("mensagem").value;
 
     // Validação do telefone
-    if (!validarTelefone(telefone)) {
+    const regex = /^\(\d{2}\)\s?\d{5}-\d{4}$/;
+    if (!regex.test(telefone)) {
         alert("Por favor, insira um número de telefone válido com o formato: (XX) XXXXX-XXXX");
-        return; // Impede o envio do formulário se o telefone for inválido
+        return;
     }
 
     // Criando o Embed com os dados
@@ -28,13 +27,13 @@ document.getElementById("contact-form").addEventListener("submit", function(even
             {
                 "title": "<a:obsidian:1229497555000234138> Contato Recebido",
                 "description": `<:obsidian:1229727889268674641> **Nome**: ${nome}\n`,
-                "color": 0x9e26d6,  // Cor do embed em formato hexadecimal (ex: roxo)
+                "color": 0x9e26d6,
                 "footer": {
                     "text": "Atenciosamente Obsidian Codes™",
-                    "icon_url": "https://cdn.discordapp.com/attachments/1281996602743066664/1343818881952776255/home.png"  // URL da imagem que você quer colocar no rodapé
+                    "icon_url": "https://cdn.discordapp.com/attachments/1281996602743066664/1343818881952776255/home.png"
                 },
                 "thumbnail": {
-                    "url": "https://cdn.discordapp.com/attachments/1281996602743066664/1343818881952776255/home.png"  // Link para a imagem que aparece no embed
+                    "url": "https://cdn.discordapp.com/attachments/1281996602743066664/1343818881952776255/home.png"
                 },
                 "fields": [
                     {
@@ -59,23 +58,25 @@ document.getElementById("contact-form").addEventListener("submit", function(even
         ]
     };
 
-    // Enviando o embed para o Webhook do Discord
-    fetch(webhookURL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(embed)
-    })
-    .then(response => {
-        if (response.ok) {
-            alert("Mensagem enviada com sucesso para o Discord!");
-            document.getElementById("contact-form").reset(); // Limpa o formulário
-        } else {
+    // Obter o webhookURL de forma assíncrona e enviar os dados
+    getWebhookURL().then(webhookURL => {
+        fetch(webhookURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(embed)
+        })
+        .then(response => {
+            if (response.ok) {
+                alert("Mensagem enviada com sucesso para o Discord!");
+                document.getElementById("contact-form").reset(); // Limpa o formulário
+            } else {
+                alert("Erro ao enviar a mensagem.");
+            }
+        })
+        .catch(() => {
             alert("Erro ao enviar a mensagem.");
-        }
-    })
-    .catch(() => {
-        alert("Erro ao enviar a mensagem.");
+        });
     });
 });
