@@ -22,4 +22,4 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 - **Responsividade**: Utilização de **media queries** para adaptar o layout a diferentes resoluções de tela.
 
 ## ✅ Veja o resultado:
-https://thaynafd.github.io/obsidian/
+obsidian.discloud.app
