@@ -31,10 +31,9 @@
                 <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1100">
                     Nos envie uma mensagem e nós responderemos o mais rápido possível!
                 </p>
-
-                <p>Deixe suas informações ao lado que entraremos em contato ou entre no nosso servidor:</p>
+                <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1100">Deixe suas informações ao lado que entraremos em contato ou entre no nosso servidor:</p>
                 <div class="social-links">
-                    <a href="https://discord.gg/xVXT4ZJ488" data-aos="fade-up" data-aos-duration="500" data-aos-delay="300"><i class="fa-brands fa-discord"></i></a>
+                    <a href="https://discord.gg/xVXT4ZJ488" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1100" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord"></i></a>
                 </div>
             </div>
 
@@ -48,7 +47,7 @@
 
                     <div class="input-field" data-aos="flip-up" data-aos-duration="1500" data-aos-delay="400">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required placeholder="seu melhor email">
+                        <input type="email" id="email" name="email" required placeholder="seu melhor email" autocomplete="on">
                     </div>
 
                     <div class="input-field" data-aos="flip-up" data-aos-duration="1500" data-aos-delay="600">
@@ -70,10 +69,11 @@
             </div>
         </div>
     </section>
-    <script src="src/js/contato.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="src/js/contato.js"></script>
     <script>
-      AOS.init({offset:0});
+        AOS.init({offset:0});
     </script>
 </body>
 </html>
