@@ -1,7 +1,5 @@
-requie('dotenv').config();
-
 // URL do webhook do Discord
-const webhookURL = process.env.webhook;
+const webhookURL = `${secrets.webhook}`;  // URL do webhook do Discord
 
 // Função para validar o telefone com DDD
 function validarTelefone(telefone) {
@@ -77,7 +75,7 @@ document.getElementById("contact-form").addEventListener("submit", function(even
             alert("Erro ao enviar a mensagem.");
         }
     })
-    .catch(error => {
+    .catch(() => {
         alert("Erro ao enviar a mensagem.");
     });
 });
