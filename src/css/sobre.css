@@ -47,6 +47,32 @@ nav {
     text-shadow: 0 0 10vw #9e26d6;
 }
 
+.dropdown{
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    transform: translateY(-500px);
+    width: 100%;
+    height: auto;
+    backdrop-filter: blur(4px) brightness(40%);
+    box-shadow:  0 0 20px black;
+    transition: 0.2s linear;
+}
+
+.dropdown .links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown .links a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    transition: 0.2s linear;
+}
+
 /* Estilo do botão Hamburguer */
 .hamburg, .cancel {
     cursor: pointer;
@@ -93,43 +119,6 @@ nav {
     color: #9e26d6;
 }
 
-/* Dropdown de navegação */
-.dropdown {
-    z-index: 100;
-    position: absolute;
-    top: 0;
-    transform: translateY(-500px);
-    width: 100%;
-    backdrop-filter: blur(4px) brightness(40%);
-    box-shadow: 0 0 20px black;
-    transition: 0.2s linear;
-}
-
-.dropdown .links a {
-    display: flex;
-    color: white;
-    text-decoration: none;
-    justify-content: center;
-    padding: 15px 0;
-    align-items: center;
-    transition: 0.2s linear;
-}
-
-.dropdown .links a::before {
-    position: absolute;
-    content: "";
-    bottom: -3px;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background-color: #9e26d6;
-    transition: 0.2s linear;
-}
-
-.dropdown .links a:hover {
-    background-color: #9e26d6;
-}
-
 /* Estilo da seção principal */
 section {
     width: 100%;
@@ -162,7 +151,6 @@ section {
     text-align: center;
     margin-top: 10px;
 }
-
 
 .card {
     width: 80%;
@@ -227,12 +215,11 @@ p {
     transition: transform 0.3s ease-in-out;
 }
 
-/* Estilo para telas pequenas */
-@media (max-width: 884px) {
-    nav .logo {
+@media (max-width:884px) {
+    nav .logo{
         position: absolute;
-        top: 16vw;
-        left: 15vw;
+        top: 16px;
+        left: 15px;
         font-size: 1.5rem;
     }
 
@@ -241,52 +228,176 @@ p {
         flex-direction: column;
     }
 
-    .nav-container .links {
+    .nav-container .links{
         display: none;
     }
 
-    .hamburg, .cancel {
+    .hamburg,
+    .cancel{
         display: block;
     }
 
-    .main-container .content {
+    .main-container .content{
         width: 80%;
     }
 
-    .social-links i {
+    .social-links i{
         width: 2.5rem;
         height: 2.5rem;
         font-size: 1.5rem;
     }
 
-    .main-container .image {
+    .main-container .image{
         z-index: -1;
-        width: 40%;
-        height: 30%;
+        width: 50%;
+        height: 60%;
     }
 }
 
-/* Ajustes para telas menores */
 @media (max-width: 440px) {
-    .main-container .image {
-        width: 70%;
-        height: 80%;
-        margin-bottom: 0;
+    /* Card */
+    .card {
+        width: 70%; /* Ajusta a largura do card */
+        height: 40%; /* Deixa a altura adaptável */
+        padding: 15px; /* Ajuste o padding para não ficar tão apertado */
     }
 
-    .main-container .content {
+    /* Títulos (h1) */
+    .content h1 {
+        font-size: 1.2rem; /* Ajuste para um tamanho de texto menor */
+    }
+
+    /* Texto */
+    .content p, .texto {
+        font-size: 0.2rem; /* Ajuste o tamanho da fonte */
+        margin: 5px 0; /* Ajuste a margem para maior leitura em telas pequenas */
+    }
+
+    /* Features - Ajustes para garantir que todos os itens apareçam */
+    .features {
         width: 100%;
-    }
-
-    .main-container button {
-        margin-top: 15px;
+        height: auto;
+        display: flex;
+        justify-content: ; /* Distribui os itens igualmente */
+        padding-bottom: 10px; /* Evita que o scroll sobreponha outros elementos */
+        flex-direction: row; /* Coloca as features em uma coluna */
+        align-items: center; /* Centraliza as features */
     }
 
     .feature {
-        width: calc(100% - 20px);
+        width: 25%; /* Ajusta a largura para que 2 features possam caber por linha */
+        height: auto; /* Ajusta a altura automaticamente */
+        padding: 10px; /* Reduz o padding */
+        font-size: 0.8rem; /* Ajusta o tamanho da fonte nas features */
     }
 
-    .nav-container .links a {
-        font-size: 1rem;
+    .feature i {
+        font-size: 2rem; /* Ajusta o tamanho dos ícones */
+    }
+
+    .feature h3 {
+        font-size: 1rem; /* Ajuste o tamanho do título da feature */
+    }
+
+    .feature p {
+        font-size: 0.9rem; /* Ajuste o tamanho da fonte do parágrafo */
+    }
+
+    /* Ajustes para o botão hamburguer */
+    .hamburg, .cancel {
+        font-size: 2rem; /* Ajuste o tamanho da fonte do ícone */
+    }
+
+    /* Ajustar o logo */
+    .logo {
+        font-size: 1.5rem; /* Ajuste o tamanho do logo */
+    }
+
+    /* Ajuste o tamanho dos links no dropdown */
+    .dropdown .links a {
+        font-size: 1rem; /* Ajusta o tamanho da fonte dos links no menu dropdown */
+        padding: 10px 15px; /* Ajuste o padding para os links não ficarem tão grandes */
+        margin-top: auto;
+    }
+
+    /* Ajustes no texto das seções */
+    .texto {
+        font-size: 0.7rem; /* Ajuste o tamanho da fonte do texto */
+    }
+}
+
+@media (max-width: 375px) {
+    /* Card */
+    .card {
+        width: 70%; /* Ajusta a largura do card */
+        height: 40%; /* Deixa a altura adaptável */
+        padding: 15px; /* Ajuste o padding para não ficar tão apertado */
+    }
+
+    /* Títulos (h1) */
+    .content h1 {
+        font-size: 1rem; /* Ajuste para um tamanho de texto menor */
+    }
+
+    /* Texto */
+    .content p, .texto {
+        font-size: 10px; /* Ajuste o tamanho da fonte */
+        margin: 5px 0; /* Ajuste a margem para maior leitura em telas pequenas */
+    }
+
+    /* Features - Ajustes para garantir que todos os itens apareçam */
+    .features {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row; /* Coloca as features em uma coluna */
+        align-items: center; /* Centraliza as features */
+    }
+
+    .feature {
+        width: 25%; /* Ajusta a largura para que 2 features possam caber por linha */
+        height: 25%; /* Ajusta a altura para que as features fiquem quadradas */
+        padding: 10px; /* Reduz o padding */
+        font-size: 0.7rem; /* Ajusta o tamanho da fonte nas features */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .feature i {
+        font-size: 2.0rem; /* Ajusta o tamanho dos ícones */
+    }
+
+    .feature h3 {
+        font-size: 0.5rem; /* Ajuste o tamanho do título da feature */
+    }
+
+    .feature p {
+        padding: 10px 0; /* Ajuste o padding do parágrafo */
+        font-size: 0.7rem; /* Ajuste o tamanho da fonte do parágrafo */
+        text-align: center; /* Centraliza o texto */
+    }
+
+    /* Ajustes para o botão hamburguer */
+    .hamburg, .cancel {
+        font-size: 1rem; /* Ajuste o tamanho da fonte do ícone */
+    }
+
+    /* Ajustar o logo */
+    .logo {
+        font-size: 1.0rem; /* Ajuste o tamanho do logo */
+    }
+
+    /* Ajuste o tamanho dos links no dropdown */
+    .dropdown .links a {
+        font-size: 1rem; /* Ajusta o tamanho da fonte dos links no menu dropdown */
+        padding: 10px 15px; /* Ajuste o padding para os links não ficarem tão grandes */
+        margin-top: auto;
+    }
+
+    /* Ajustes no texto das seções */
+    .texto {
+        font-size: 0.6rem; /* Ajuste o tamanho da fonte do texto */
     }
 }

@@ -58,6 +58,32 @@ nav {
     font-size: clamp(2.5rem, 0.5rem + 5vw, 3rem);
 }
 
+.dropdown{
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    transform: translateY(-500px);
+    width: 100%;
+    height: auto;
+    backdrop-filter: blur(4px) brightness(40%);
+    box-shadow:  0 0 20px black;
+    transition: 0.2s linear;
+}
+
+.dropdown .links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown .links a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    transition: 0.2s linear;
+}
+
 /* Links de navegação */
 .nav-container .links {
     display: flex;
@@ -93,42 +119,6 @@ nav {
     color: #9e26d6;
 }
 
-/* Dropdown de navegação */
-.dropdown {
-    z-index: 100;
-    position: absolute;
-    top: 0;
-    transform: translateY(-500px);
-    width: 100%;
-    backdrop-filter: blur(4px) brightness(40%);
-    box-shadow: 0 0 20px black;
-    transition: 0.2s linear;
-}
-
-.dropdown .links a {
-    display: flex;
-    color: white;
-    text-decoration: none;
-    justify-content: center;
-    padding: 15px 0;
-    align-items: center;
-    transition: 0.2s linear;
-}
-
-.dropdown .links a::before {
-    position: absolute;
-    content: "";
-    bottom: -3px;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background-color: #9e26d6;
-    transition: 0.2s linear;
-}
-
-.dropdown .links a:hover {
-    background-color: #9e26d6;
-}
 
 /* Estilo da seção principal */
 section {
@@ -147,13 +137,14 @@ section {
     background-color: rgb(0, 0, 0);
 }
 
-/* Imagem quadrada com bordas redondas */
+/* Ajuste do z-index da imagem e do dropdown */
 .main-container .image {
     width: 15%;
     height: 30%;
     border-radius: 30%;
-    position: relative;
-    box-shadow: 0 0 50px rgba(158, 38, 214, 0.8); /* Usando uma sombra suave e difusa */
+    position: relative; /* Alterado de 'fixed' para 'relative' */
+    box-shadow: 0 0 50px rgba(158, 38, 214, 0.8);
+    z-index: 25; /* Garantir que a imagem não sobreponha outros elementos */
 }
 
 .main-container .image img {
@@ -229,60 +220,130 @@ section {
     cursor: pointer;
 }
 
-/* Estilo para telas pequenas */
-@media (max-width: 884px) {
-    nav .logo {
+@media (max-width:884px) {
+    nav .logo{
         position: absolute;
-        top: 16vw;
-        left: 15vw;
+        top: 16px;
+        left: 15px;
         font-size: 1.5rem;
     }
 
     .main-container {
+        width: 100%;
+        height: 100%;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 4%;
+        background-color: rgb(0, 0, 0);
+    }
+    
+    /* Ajuste do z-index da imagem e do dropdown */
+    .main-container .image {
+        width: 15%;
+        height: 30%;
+        border-radius: 30%;
+        position: relative; /* Alterado de 'fixed' para 'relative' */
+        box-shadow: 0 0 50px rgba(158, 38, 214, 0.8);
+        z-index: 25; /* Garantir que a imagem não sobreponha outros elementos */
+    }
+    
+    .main-container .image img {
+        width: 100%;
+        height: 100%;
+        transition: 0.2s linear;
+        position: fixed;
+    }
+    
+    .main-container .image:hover {
+        animation: animate 1.5s ease-in-out infinite;
     }
 
-    .nav-container .links {
+    .nav-container .links{
         display: none;
     }
 
-    .hamburg, .cancel {
+    .hamburg,
+    .cancel{
         display: block;
     }
 
-    .main-container .content {
+    .main-container .content{
         width: 80%;
     }
 
-    .main-container .image {
-        z-index: -1;
-        width: 40%;
-        height: 30%;
+    .social-links i{
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.5rem;
     }
 }
 
-/* Ajustes para telas menores */
-@media (max-width: 440px) {
-    .main-container .image {
-        width: 70%;
-        height: 80%;
-        margin-bottom: 0;
-    }
-
-    .main-container .content {
+@media (max-width:440px){
+    .main-container {
         width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: right;
+        align-items: right;
+        gap: 4%;
+        background-color: rgb(0, 0, 0);
+    }
+    
+    /* Ajuste do z-index da imagem e do dropdown */
+    .main-container .image {
+        width: 30%;
+        height: 40%;
+        border-radius: 30%;
+        position: relative; /* Alterado de 'fixed' para 'relative' */
+        box-shadow: 0 0 50px rgba(158, 38, 214, 0.8);
+        z-index: 25; /* Garantir que a imagem não sobreponha outros elementos */
+    }
+    
+    .main-container .image img {
+        width: 100%;
+        height: 100%;
+        transition: 0.2s linear;
+        position: fixed;
+    }
+    
+    .main-container .image:hover {
+        animation: animate 1.5s ease-in-out infinite;
     }
 
-    .main-container button {
+    .main-container .content{
+        width: 80%;
+    }
+
+    .main-container button{
         margin-top: 15px;
     }
 
-    .feature {
-        width: calc(100% - 20px);
+    .content h1 {
+        font-size: 1rem;
+    }
+    
+    .content .typewriter {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+    
+    .content .typewriter-text {
+        color: #9e26d6;
+        text-shadow: 0 0 10px #9e26d6;
+    }
+    
+    .content p {
+        font-size: 1rem;
+        margin: 10px 0;
     }
 
-    .nav-container .links a {
-        font-size: 1rem;
+    .btn {
+        width: auto;
+        height: auto;
+        padding: 10px 20px;
+        margin: 0 auto;
+        display: block;
+        text-align: center;
     }
 }

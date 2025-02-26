@@ -105,29 +105,30 @@ nav {
     transition: 0.2s linear;
 }
 
-.dropdown .links a {
+.dropdown{
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    transform: translateY(-500px);
+    width: 100%;
+    height: auto;
+    backdrop-filter: blur(4px) brightness(40%);
+    box-shadow:  0 0 20px black;
+    transition: 0.2s linear;
+}
+
+.dropdown .links {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown .links a {
     color: white;
     text-decoration: none;
-    justify-content: center;
-    padding: 15px 0;
-    align-items: center;
+    padding: 15px 20px;
     transition: 0.2s linear;
-}
-
-.dropdown .links a::before {
-    position: absolute;
-    content: "";
-    bottom: -3px;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background-color: #9e26d6;
-    transition: 0.2s linear;
-}
-
-.dropdown .links a:hover {
-    background-color: #9e26d6;
 }
 
 /* Estilo da seção principal */
@@ -190,70 +191,6 @@ section {
     font-weight: 700;
     box-shadow: 0 0 40px #9e26d6;
     cursor: pointer;
-}
-
-/* Estilo para telas pequenas */
-@media (max-width: 884px) {
-    nav .logo {
-        position: absolute;
-        top: 16vw;
-        left: 15vw;
-        font-size: 1.5rem;
-    }
-
-    .main-container {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .nav-container .links {
-        display: none;
-    }
-
-    .hamburg, .cancel {
-        display: block;
-    }
-
-    .main-container .content {
-        width: 80%;
-    }
-
-    .social-links i{
-        width: 2.5rem;
-        height: 2.5rem;
-        font-size: 1.5rem;
-    }
-
-    .main-container .image {
-        z-index: -1;
-        width: 40%;
-        height: 30%;
-    }
-}
-
-/* Ajustes para telas menores */
-@media (max-width: 440px) {
-    .main-container .image {
-        width: 70%;
-        height: 80%;
-        margin-bottom: 0;
-    }
-
-    .main-container .content {
-        width: 100%;
-    }
-
-    .main-container button {
-        margin-top: 15px;
-    }
-
-    .feature {
-        width: calc(100% - 20px);
-    }
-
-    .nav-container .links a {
-        font-size: 1rem;
-    }
 }
 
 .social-links i{
@@ -366,4 +303,150 @@ form button {
 
 form button:hover {
     background-color: #7a1fa5;
+}
+
+/* Estilo para telas pequenas */
+@media (max-width: 884px) {
+    nav .logo {
+        position: absolute;
+        top: 6vw;
+        left: 15vw;
+        font-size: 1.5rem;
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: normal;
+        gap: 1%;  /* Reduz o espaçamento entre o texto e o formulário */
+        width: 68%;  /* Reduz a largura para centralizar mais */
+        background-color: rgb(0, 0, 0);
+        padding: 20px;  /* Reduz o padding para aproximar mais os elementos */
+        margin: 50px auto;  /* Centraliza o container e adiciona margem superior */
+    }
+
+    .main-container .content {
+        width: 80%;
+    }
+
+    .nav-container .links {
+        display: none;
+    }
+
+    .hamburg, .cancel {
+        display: block;
+    }
+
+    .main-container .content {
+        width: 80%;
+    }
+
+    .social-links i{
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.5rem;
+    }
+    
+    /* Ajuste o tamanho dos links no dropdown */
+    .dropdown .links a {
+        font-size: 1rem; /* Ajusta o tamanho da fonte dos links no menu dropdown */
+        padding: 10px 15px; /* Ajuste o padding para os links não ficarem tão grandes */
+        margin-top: auto;
+    }
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 440px) {
+    .main-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: normal;
+        gap: 1%;  /* Reduz o espaçamento entre o texto e o formulário */
+        width: 48%;  /* Reduz a largura para centralizar mais */
+        background-color: rgb(0, 0, 0);
+        padding: 20px;  /* Reduz o padding para aproximar mais os elementos */
+        margin: 50px auto;  /* Centraliza o container e adiciona margem superior */
+    }
+
+    .main-container .content {
+        width: 60%;
+    }
+
+    .main-container button {
+        margin-top: 15px;
+    }
+
+    .feature {
+        width: calc(100% - 20px);
+    }
+
+    .nav-container .links a {
+        font-size: 1rem;
+    }
+
+        /* Formulário à direita */
+    .form-container {
+        width: 100%;
+        height: auto;  /* Ajuste para ter as duas colunas balanceadas */
+        display: flex;
+        flex-direction: row;
+        background-color: rgb(36, 36, 36);
+        padding: 20px;
+        border-radius: 20%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 375px) {
+    .main-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: normal;
+        gap: 30%;  /* Reduz o espaçamento entre o texto e o formulário */
+        width: 48%;  /* Reduz a largura para centralizar mais */
+        background-color: rgb(0, 0, 0);
+        padding: 10px;  /* Reduz o padding para aproximar mais os elementos */
+        margin: 50px auto;  /* Centraliza o container e adiciona margem superior */
+    }
+
+    .main-container .content {
+        width: 80%;
+    }
+
+    .main-container button {
+        margin-top: 15px;
+    }
+
+    .feature {
+        width: calc(100% - 20px);
+    }
+
+    .nav-container .links a {
+        font-size: 1rem;
+    }
+
+    /* Formulário à direita */
+    .form-container {
+        width: 100%;
+        height: auto;  /* Ajuste para ter as duas colunas balanceadas */
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(36, 36, 36);
+        padding: 10px;  /* Reduz o padding para diminuir o tamanho do formulário */
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn {
+        width: auto;
+        height: auto;
+        padding: 10px 20px;
+        margin: 0 auto;
+        display: block;
+        text-align: center;
+    }
 }
